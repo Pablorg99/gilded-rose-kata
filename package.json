@@ -6,7 +6,8 @@
     "precompile": "rimraf app/**/*.js test/**/*.js",
     "compile": "tsc",
     "pretest": "rimraf app/**/*.js test/**/*.js",
-    "test": "nyc mocha"
+    "test": "nyc mocha",
+    "test:watch": "mocha --watch-extensions ts --watch"
   },
   "license": "MIT",
   "private": true,
@@ -39,4 +40,3 @@
     ]
   }
 }
-
