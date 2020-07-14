@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 
 import AgedBrieItem from '../app/AgedBrieItem';
+import BackstagePassItem from '../app/BackstagePassItem';
 import GeneralItem from '../app/GeneralItem';
 import { GildedRose, Item } from '../app/gilded-rose';
 import SulfurasItem from '../app/SulfurasItem';
@@ -25,7 +26,7 @@ describe('Gilded Rose', function () {
       const items = [generalItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems[0]).to.eql(expectedItem);
     });
@@ -39,7 +40,7 @@ describe('Gilded Rose', function () {
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems).to.eql(expectedItems);
     });
@@ -53,7 +54,7 @@ describe('Gilded Rose', function () {
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems).to.eql(expectedItems);
     });
@@ -64,7 +65,7 @@ describe('Gilded Rose', function () {
       const items = [generalItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems[0]).to.eql(expectedItem);
     });
@@ -77,7 +78,7 @@ describe('Gilded Rose', function () {
       const items = [agedBrieItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems[0]).to.eql(expectedItem);
     });
@@ -91,7 +92,7 @@ describe('Gilded Rose', function () {
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems).to.eql(expectedItems);
     });
@@ -105,7 +106,7 @@ describe('Gilded Rose', function () {
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems).to.eql(expectedItems);
     });
@@ -121,7 +122,7 @@ describe('Gilded Rose', function () {
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.update();
+      const updatedItems = gildedRose.updateQuality();
 
       expect(updatedItems).to.eql(expectedItems);
     });
@@ -130,7 +131,7 @@ describe('Gilded Rose', function () {
   describe(`Gilded Rose with ${backstagePassItemName} items`, () => {
     it('should increase by 1 the quality after the update', () => {
       const backstagePassItem = new Item(backstagePassItemName, 20, 9);
-      const expectedItem = new Item(backstagePassItemName, 19, 10);
+      const expectedItem = new BackstagePassItem(backstagePassItemName, 19, 10);
       const items = [backstagePassItem];
       const gildedRose = new GildedRose(items);
 
@@ -148,9 +149,21 @@ describe('Gilded Rose', function () {
         secondBackstagePassItem,
         thirdBackstagePassItem,
       ];
-      const firstExpectedItem = new Item(backstagePassItemName, 9, 12);
-      const secondExpectedItem = new Item(backstagePassItemName, 9, 50);
-      const thirdExpectedItem = new Item(backstagePassItemName, 4, 12);
+      const firstExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        9,
+        12
+      );
+      const secondExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        9,
+        50
+      );
+      const thirdExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        4,
+        12
+      );
       const gildedRose = new GildedRose(items);
 
       const updatedItems = gildedRose.updateQuality();
@@ -164,8 +177,16 @@ describe('Gilded Rose', function () {
       const firstBackstagePassItem = new Item(backstagePassItemName, 5, 10);
       const secondBackstagePassItem = new Item(backstagePassItemName, 5, 48);
       const items = [firstBackstagePassItem, secondBackstagePassItem];
-      const firstExpectedItem = new Item(backstagePassItemName, 4, 13);
-      const secondExpectedItem = new Item(backstagePassItemName, 4, 50);
+      const firstExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        4,
+        13
+      );
+      const secondExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        4,
+        50
+      );
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
@@ -174,12 +195,20 @@ describe('Gilded Rose', function () {
       expect(updatedItems).to.eql(expectedItems);
     });
 
-    it('should not increase the quality when it is over 50', () => {
+    it('should never set a quality when over 50', () => {
       const firstAgedBrieItem = new Item(backstagePassItemName, 8, 50);
       const secondAgedBrieItem = new Item(backstagePassItemName, 3, 75);
       const items = [firstAgedBrieItem, secondAgedBrieItem];
-      const firstExpectedItem = new Item(backstagePassItemName, 7, 50);
-      const secondExpectedItem = new Item(backstagePassItemName, 2, 75);
+      const firstExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        7,
+        50
+      );
+      const secondExpectedItem = new BackstagePassItem(
+        backstagePassItemName,
+        2,
+        50
+      );
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
@@ -190,7 +219,7 @@ describe('Gilded Rose', function () {
 
     it('should drop the quality to 0 when the concert is passed', () => {
       const backstagePassItem = new Item(backstagePassItemName, 0, 10);
-      const expectedItem = new Item(backstagePassItemName, -1, 0);
+      const expectedItem = new BackstagePassItem(backstagePassItemName, -1, 0);
       const items = [backstagePassItem];
       const gildedRose = new GildedRose(items);
 

@@ -1,11 +1,13 @@
 import AgedBrieItem from './AgedBrieItem';
+import BackstagePassItem from './BackstagePassItem';
 import GeneralItem from './GeneralItem';
 import { Item } from './gilded-rose';
 import SulfurasItem from './SulfurasItem';
 import UpdatableItem from './UpdatableItem';
 
-const AgedBrie = 'Aged Brie';
-const Sulfuras = 'Sulfuras, Hand of Ragnaros';
+const agedBrie = 'Aged Brie';
+const sulfuras = 'Sulfuras, Hand of Ragnaros';
+const backstagePass = 'Backstage passes to a TAFKAL80ETC concert';
 
 export default class UpdatableItemsFactory {
   static fromItemsArray(items: Array<Item>): Array<UpdatableItem> {
@@ -14,11 +16,14 @@ export default class UpdatableItemsFactory {
 
   private static updatableItemFromItem(item: Item): UpdatableItem {
     switch (item.name) {
-      case AgedBrie:
+      case agedBrie:
         return new AgedBrieItem(item.name, item.sellIn, item.quality);
 
-      case Sulfuras:
+      case sulfuras:
         return new SulfurasItem(item.name, item.sellIn, item.quality);
+
+      case backstagePass:
+        return new BackstagePassItem(item.name, item.sellIn, item.quality);
 
       default:
         return new GeneralItem(item.name, item.sellIn, item.quality);
