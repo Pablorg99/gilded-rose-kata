@@ -28,12 +28,12 @@ describe('Gilded Rose', function () {
       const firstGeneralItem = new Item('First Item', 10, 10);
       const secondGeneralItem = new Item('Second Item', 1, 1);
       const items = [firstGeneralItem, secondGeneralItem];
-      const firstExpectedItem = new Item('First Item', 9, 9);
-      const secondExpectedItem = new Item('Second Item', 0, 0);
+      const firstExpectedItem = new GeneralItem('First Item', 9, 9);
+      const secondExpectedItem = new GeneralItem('Second Item', 0, 0);
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems).to.eql(expectedItems);
     });
@@ -42,23 +42,23 @@ describe('Gilded Rose', function () {
       const firstGeneralItem = new Item('Item', 0, 10);
       const secondGeneralItem = new Item('Item', -2, 10);
       const items = [firstGeneralItem, secondGeneralItem];
-      const firstExpectedItem = new Item('Item', -1, 8);
-      const secondExpectedItem = new Item('Item', -3, 8);
+      const firstExpectedItem = new GeneralItem('Item', -1, 8);
+      const secondExpectedItem = new GeneralItem('Item', -3, 8);
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems).to.eql(expectedItems);
     });
 
     it('should not reduce the quality of an item to a negative value', () => {
       const generalItem = new Item('Item', 0, 0);
-      const expectedItem = new Item('Item', -1, 0);
+      const expectedItem = new GeneralItem('Item', -1, 0);
       const items = [generalItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems[0]).to.eql(expectedItem);
     });

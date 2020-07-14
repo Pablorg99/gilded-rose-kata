@@ -8,7 +8,25 @@ export default class GeneralItem implements UpdatableItem {
   ) {}
 
   update() {
+    this.decreaseSellIn();
+    this.decreaseQuality();
+  }
+
+  private decreaseSellIn() {
     this.sellIn = this.sellIn - 1;
-    this.quality = this.quality - 1;
+  }
+
+  private decreaseQuality() {
+    this.quality = this.updatedQuality();
+    if (this.quality < 0) {
+      this.quality = 0;
+    }
+  }
+
+  private updatedQuality() {
+    if (this.sellIn <= 0) {
+      return this.quality - 2;
+    }
+    return this.quality - 1;
   }
 }
