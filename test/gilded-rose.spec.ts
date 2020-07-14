@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+import AgedBrieItem from '../app/AgedBrieItem';
 import GeneralItem from '../app/GeneralItem';
 import { GildedRose, Item } from '../app/gilded-rose';
 
@@ -67,11 +68,11 @@ describe('Gilded Rose', function () {
   describe('Gilded Rose with "Aged Brie" items', () => {
     it('should increase by 1 the quality of an "Aged Brie" item after the update', () => {
       const agedBrieItem = new Item('Aged Brie', 5, 9);
-      const expectedItem = new Item('Aged Brie', 4, 10);
+      const expectedItem = new AgedBrieItem('Aged Brie', 4, 10);
       const items = [agedBrieItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems[0]).to.eql(expectedItem);
     });
@@ -80,26 +81,26 @@ describe('Gilded Rose', function () {
       const firstAgedBrieItem = new Item('Aged Brie', 0, 8);
       const secondAgedBrieItem = new Item('Aged Brie', -5, 8);
       const items = [firstAgedBrieItem, secondAgedBrieItem];
-      const firstExpectedItem = new Item('Aged Brie', -1, 10);
-      const secondExpectedItem = new Item('Aged Brie', -6, 10);
+      const firstExpectedItem = new AgedBrieItem('Aged Brie', -1, 10);
+      const secondExpectedItem = new AgedBrieItem('Aged Brie', -6, 10);
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems).to.eql(expectedItems);
     });
 
-    it('should not increase the quality of an "Aged Brie" item when it is over 50', () => {
+    it('should never increase the quality of an "Aged Brie" item over 50', () => {
       const firstAgedBrieItem = new Item('Aged Brie', 5, 50);
       const secondAgedBrieItem = new Item('Aged Brie', -5, 75);
       const items = [firstAgedBrieItem, secondAgedBrieItem];
-      const firstExpectedItem = new Item('Aged Brie', 4, 50);
-      const secondExpectedItem = new Item('Aged Brie', -6, 75);
+      const firstExpectedItem = new AgedBrieItem('Aged Brie', 4, 50);
+      const secondExpectedItem = new AgedBrieItem('Aged Brie', -6, 50);
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems).to.eql(expectedItems);
     });
