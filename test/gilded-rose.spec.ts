@@ -1,5 +1,7 @@
 import { expect } from 'chai';
-import { Item, GildedRose } from '../app/gilded-rose';
+
+import GeneralItem from '../app/GeneralItem';
+import { GildedRose, Item } from '../app/gilded-rose';
 
 describe('Gilded Rose', function () {
   it('should construct an empty Gilded Rose if no items are specified', function () {
@@ -13,11 +15,11 @@ describe('Gilded Rose', function () {
   describe('Gilded Rose with general items', () => {
     it('should reduce by 1 the sell in and the quality attributes', function () {
       const generalItem = new Item('Item', 10, 10);
-      const expectedItem = new Item('Item', 9, 9);
+      const expectedItem = new GeneralItem('Item', 9, 9);
       const items = [generalItem];
       const gildedRose = new GildedRose(items);
 
-      const updatedItems = gildedRose.updateQuality();
+      const updatedItems = gildedRose.update();
 
       expect(updatedItems[0]).to.eql(expectedItem);
     });
