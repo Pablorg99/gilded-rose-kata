@@ -1,7 +1,7 @@
 export default interface UpdatableItem {
-  readonly name: string;
-  readonly sellIn: number;
-  readonly quality: number;
+  name: string;
+  sellIn: number;
+  quality: number;
 
   update(): void;
 }
