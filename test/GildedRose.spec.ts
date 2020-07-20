@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import AgedBrieItem from '../app/AgedBrieItem';
 import BackstagePassItem from '../app/BackstagePassItem';
 import GeneralItem from '../app/GeneralItem';
-import { GildedRose, Item } from '../app/gilded-rose';
+import { GildedRose, Item } from '../app/GildedRose';
 import SulfurasItem from '../app/SulfurasItem';
 
 describe('Gilded Rose', function () {
@@ -144,26 +144,10 @@ describe('Gilded Rose', function () {
       const firstBackstagePassItem = new Item(backstagePassItemName, 10, 10);
       const secondBackstagePassItem = new Item(backstagePassItemName, 10, 49);
       const thirdBackstagePassItem = new Item(backstagePassItemName, 5, 10);
-      const items = [
-        firstBackstagePassItem,
-        secondBackstagePassItem,
-        thirdBackstagePassItem,
-      ];
-      const firstExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        9,
-        12
-      );
-      const secondExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        9,
-        50
-      );
-      const thirdExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        4,
-        12
-      );
+      const items = [firstBackstagePassItem, secondBackstagePassItem, thirdBackstagePassItem];
+      const firstExpectedItem = new BackstagePassItem(backstagePassItemName, 9, 12);
+      const secondExpectedItem = new BackstagePassItem(backstagePassItemName, 9, 50);
+      const thirdExpectedItem = new BackstagePassItem(backstagePassItemName, 4, 12);
       const gildedRose = new GildedRose(items);
 
       const updatedItems = gildedRose.updateQuality();
@@ -177,16 +161,8 @@ describe('Gilded Rose', function () {
       const firstBackstagePassItem = new Item(backstagePassItemName, 5, 10);
       const secondBackstagePassItem = new Item(backstagePassItemName, 5, 48);
       const items = [firstBackstagePassItem, secondBackstagePassItem];
-      const firstExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        4,
-        13
-      );
-      const secondExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        4,
-        50
-      );
+      const firstExpectedItem = new BackstagePassItem(backstagePassItemName, 4, 13);
+      const secondExpectedItem = new BackstagePassItem(backstagePassItemName, 4, 50);
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
@@ -199,16 +175,8 @@ describe('Gilded Rose', function () {
       const firstAgedBrieItem = new Item(backstagePassItemName, 8, 50);
       const secondAgedBrieItem = new Item(backstagePassItemName, 3, 75);
       const items = [firstAgedBrieItem, secondAgedBrieItem];
-      const firstExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        7,
-        50
-      );
-      const secondExpectedItem = new BackstagePassItem(
-        backstagePassItemName,
-        2,
-        50
-      );
+      const firstExpectedItem = new BackstagePassItem(backstagePassItemName, 7, 50);
+      const secondExpectedItem = new BackstagePassItem(backstagePassItemName, 2, 50);
       const expectedItems = [firstExpectedItem, secondExpectedItem];
       const gildedRose = new GildedRose(items);
 
