@@ -1,9 +1,9 @@
-import AgedBrieItem from './AgedBrieItem';
-import BackstagePassItem from './BackstagePassItem';
-import GeneralItem from './GeneralItem';
-import { Item } from './gilded-rose';
-import SulfurasItem from './SulfurasItem';
+import Item from './Item';
 import UpdatableItem from './UpdatableItem';
+import AgedBrieItem from './UpdatableItems/AgedBrieItem';
+import BackstagePassItem from './UpdatableItems/BackstagePassItem';
+import GeneralItem from './UpdatableItems/GeneralItem';
+import SulfurasItem from './UpdatableItems/SulfurasItem';
 
 const agedBrie = 'Aged Brie';
 const sulfuras = 'Sulfuras, Hand of Ragnaros';

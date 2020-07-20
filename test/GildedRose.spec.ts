@@ -1,10 +1,11 @@
 import { expect } from 'chai';
 
-import AgedBrieItem from '../app/AgedBrieItem';
-import BackstagePassItem from '../app/BackstagePassItem';
-import GeneralItem from '../app/GeneralItem';
-import { GildedRose, Item } from '../app/GildedRose';
-import SulfurasItem from '../app/SulfurasItem';
+import GildedRose from '../app/GildedRose';
+import Item from '../app/Item';
+import AgedBrieItem from '../app/UpdatableItems/AgedBrieItem';
+import BackstagePassItem from '../app/UpdatableItems/BackstagePassItem';
+import GeneralItem from '../app/UpdatableItems/GeneralItem';
+import SulfurasItem from '../app/UpdatableItems/SulfurasItem';
 
 describe('Gilded Rose', function () {
   const sulfurasItemName = 'Sulfuras, Hand of Ragnaros';

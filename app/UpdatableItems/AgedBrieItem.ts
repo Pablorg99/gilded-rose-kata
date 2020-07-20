@@ -1,11 +1,7 @@
-import UpdatableItem from './UpdatableItem';
+import UpdatableItem from '../UpdatableItem';
 
 export default class AgedBrieItem implements UpdatableItem {
-  constructor(
-    public name: string,
-    public sellIn: number,
-    public quality: number
-  ) {}
+  constructor(public name: string, public sellIn: number, public quality: number) {}
 
   update() {
     this.decreaseSellIn();
