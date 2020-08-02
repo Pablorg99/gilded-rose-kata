@@ -4,10 +4,12 @@ import AgedBrieItem from './UpdatableItems/AgedBrieItem';
 import BackstagePassItem from './UpdatableItems/BackstagePassItem';
 import GeneralItem from './UpdatableItems/GeneralItem';
 import SulfurasItem from './UpdatableItems/SulfurasItem';
+import ConjuredItem from './UpdatableItems/ConjuredItem';
 
 const agedBrie = 'Aged Brie';
 const sulfuras = 'Sulfuras, Hand of Ragnaros';
 const backstagePass = 'Backstage passes to a TAFKAL80ETC concert';
+const conjured = 'Conjured';
 
 export default class UpdatableItemsFactory {
   static fromItemsArray(items: Array<Item>): Array<UpdatableItem> {
@@ -24,6 +26,9 @@ export default class UpdatableItemsFactory {
 
       case backstagePass:
         return new BackstagePassItem(item.name, item.sellIn, item.quality);
+
+      case conjured:
+        return new ConjuredItem(item.name, item.sellIn, item.quality);
 
       default:
         return new GeneralItem(item.name, item.sellIn, item.quality);
