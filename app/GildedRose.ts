@@ -1,18 +1,13 @@
-import Item from './Item';
-import UpdatableItem from './UpdatableItem';
-import UpdatableItemsFactory from './UpdatableItemsFactory';
+import { Item } from './Item';
 
-export default class GildedRose {
-  items: Array<Item>;
-  updatableItems: Array<UpdatableItem>;
+export class GildedRose {
+  constructor(private _items: Array<Item>) {}
 
-  constructor(items = [] as Array<Item>) {
-    this.items = items;
-    this.updatableItems = UpdatableItemsFactory.fromItemsArray(items);
+  updateItems() {
+    this._items.forEach((item) => item.update());
   }
 
-  updateQuality() {
-    this.updatableItems.forEach((item) => item.update());
-    return this.updatableItems;
+  get items(): Array<Item> {
+    return this._items;
   }
 }
