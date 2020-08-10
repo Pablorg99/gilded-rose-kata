@@ -101,14 +101,14 @@ describe('Gilded Rose', function () {
   });
 
   describe('with Sulfuras items', () => {
-    it('should not alter the item, which quality should always be 80', () => {
+    it('should not alter the item, which quality should always be the maximum (50)', () => {
       const items = [SulfurasItem.fromSellIn(5)];
       const gildedRose = new GildedRose(items);
 
       gildedRose.updateItems();
       const updatedItem = gildedRose.items[0];
 
-      expect(updatedItem.quality.value).to.equal(80);
+      expect(updatedItem.quality.value).to.equal(50);
       expect(updatedItem.sellIn.value).to.equal(5);
     });
   });
